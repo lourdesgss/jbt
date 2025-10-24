@@ -1,0 +1,30 @@
+@startuml
+class Request {
+    +ID
+    +timestamp
+}
+
+class Response {
+    +ID
+    +message
+}
+
+class Operator {
+    +ID
+}
+
+class GateOperation {
+    +ID
+    +timestamp
+    +action
+}
+
+class Log {
+    +ID
+}
+
+Request "1" --> "0..1" Response : may have
+Operator "1" --> "0..*" Response : issues
+GateOperation "1" --> "1" Log
+
+@enduml

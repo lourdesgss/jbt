@@ -1,0 +1,46 @@
+@startuml Use Case 1
+start
+
+:Visitor arrives at the Gate;
+
+if(QR Code is available) then (yes)
+  :Visitor scans QR Code;
+  if(Visitor speaks Dutch?) then (yes)
+  else (no)
+    :Visitor chooses preferred language;
+  endif
+
+  if (Visitor is a Regular) then (yes)
+    :Visitor selects predefined profile or company;
+  else (no)
+    
+    :Visitor fills in form;
+    :Visitor agrees to safety regulations;
+      
+  endif
+
+  :System sends form to Operator;  
+
+
+  if (Operator available?) then (yes)
+      :Operator receives notification;
+      else (no)
+        repeat
+          :Notification is queued;
+          :Visitor waits;
+        repeat while (Operator Available?) is (no) not (yes)
+      endif
+      :Operator reviews form;
+      :Operator sends response;
+      :Operator opens gate;
+      :Visitor is notified;
+  else (no)
+    :Sign displays fallback instructions;
+  endif
+
+
+:Visitor accesses premises;
+
+
+stop
+@enduml

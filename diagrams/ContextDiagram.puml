@@ -1,0 +1,13 @@
+@startuml
+title Visitor Access System Context Diagram
+
+package "Visitor/Operator App System" {
+  [App System]
+}
+
+[Visitor Device] --> [App System] : Submit form / Read info
+[Operator Device] --> [App System] : Review form / Send response
+[App System] --> [Gate System] : Open/Close gate
+[App System] --> [Database] : Store submissions, logs, profiles
+
+@enduml
